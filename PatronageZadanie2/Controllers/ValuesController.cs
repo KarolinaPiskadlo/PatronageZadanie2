@@ -12,16 +12,16 @@ namespace PatronageZadanie2.Controllers
     {
         // GET api/values
         [HttpGet]
-        public ActionResult<IEnumerable<string>> Get()
+        public ActionResult<IEnumerable<string>> Get([FromQuery] string oO)
         {
-            return new string[] { "value1", "value2" };
+            return new string[] { "value1", "value2", oO };
         }
-
+        
         // GET api/values/5
         [HttpGet("{id}")]
-        public ActionResult<string> Get(int id)
+        public ActionResult<int> Get(int id)
         {
-            return "value";
+            return id;
         }
 
         // POST api/values
