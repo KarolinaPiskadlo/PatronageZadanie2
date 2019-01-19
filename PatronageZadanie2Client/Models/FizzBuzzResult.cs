@@ -3,16 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace PatronageZadanie2.Models
+namespace PatronageZadanie2Client.Models
 {
-
     public class FizzBuzzResult
     {
-        public string Result { get; }
+        public string Result { get; set; }
 
         public FizzBuzzResult(string number)
         {
-            Result = number;
+            Result = number;  
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PatronageZadanie2.Error;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -20,10 +21,10 @@ namespace PatronageZadanie2.FizzBuzz
             bool isDivisible = false;
             string returnString = "";
             int result = int.Parse(number);
-            
+
             if (!IsInRange(result))
             {
-                return "Podana wartość nie mieści się w przedziale od 0 do 1000.";
+                throw new Error.ApplicationException($"The given number exceeds the range between {MinRange} and {MaxRange}");
             }
 
             if (result % 2 == 0)

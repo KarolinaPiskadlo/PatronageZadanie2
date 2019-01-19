@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using PatronageZadanie2.Models;
 using Microsoft.Extensions.Logging;
+using PatronageZadanie2.FizzBuzz;
+using PatronageZadanie2.Error;
 
 namespace PatronageZadanie2.Controllers
 {
@@ -19,12 +21,12 @@ namespace PatronageZadanie2.Controllers
         {
             try
             {
-                var fizzbuzz = new FizzBuzz.FizzBuzzGenerator();
-                return new FizzBuzzResult(fizzbuzz.FizzBuzz(number));
+                var fizzbuzz = new FizzBuzzGenerator();
+                return Ok(new FizzBuzzResult(fizzbuzz.FizzBuzz(number)));
             }
-            catch (Exception)
+            catch (Exception exception)
             {
-                return new FizzBuzzResult("Bad Request");
+                return BadRequest(new ErrorResponse(exception.Message));
             }
         }
 
@@ -32,7 +34,7 @@ namespace PatronageZadanie2.Controllers
         [HttpGet("{id}", Name = "Get")]
         public string Get(int id)
         {
-            return "value";
+            return $"{id}";
         }
 
         // POST: api/FizzBuzz
