@@ -33,10 +33,10 @@ namespace PatronageZadanie2.Controllers
         [HttpGet("{id}")]
         public ActionResult<IEnumerable<ConferenceRoom>> Get(int id)
         {
-            
+
             var room = context.ConferenceRoom.Find(id);
 
-            if(room == null)
+            if (room == null)
             {
                 return NotFound();
             }
@@ -55,7 +55,7 @@ namespace PatronageZadanie2.Controllers
                 Capacity = conferenceRoomDTO.Capacity,
                 WifiAcces = conferenceRoomDTO.WifiAcces
             };
-            
+
             context.ConferenceRoom.Add(conferenceRoom);
             context.SaveChanges();
         }
@@ -76,7 +76,7 @@ namespace PatronageZadanie2.Controllers
 
                 return NoContent();
             }
-            catch(Exception exception)
+            catch (Exception exception)
             {
                 return BadRequest(new ErrorResponse(exception.Message));
             }
@@ -94,7 +94,7 @@ namespace PatronageZadanie2.Controllers
             }
 
             context.ConferenceRoom.Remove(room);
-            
+
             context.SaveChanges();
             return NoContent();
         }

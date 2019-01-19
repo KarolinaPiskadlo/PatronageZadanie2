@@ -6,6 +6,8 @@ using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using PatronageZadanie2Client.Models;
+using PatronageZadanie2Client.Configuration;
+using Microsoft.Extensions.Options;
 
 namespace PatronageZadanie2Client.Controllers
 {
@@ -13,18 +15,22 @@ namespace PatronageZadanie2Client.Controllers
     [ApiController]
     public class ClientController : ControllerBase
     {
-        HttpClient client = new HttpClient();
+        private readonly AppSettings appSettings;
+
+        public ClientController(IOptions<AppSettings> appSettings)
+        {
+            this.appSettings = appSettings.Value;
+        }
 
         // GET api/values
         [HttpGet]
         public async Task<ActionResult<FizzBuzzResult>> Get([FromQuery] string number)
         {
-            client.BaseAddress = new Uri("http://localhost:53203/");
+            var client = new HttpClient
+            {
+                BaseAddress = new Uri(appSettings.BaseAddress)
+            };
             client.DefaultRequestHeaders.Accept.Clear();
-            client.DefaultRequestHeaders.Accept.Add(
-                new MediaTypeWithQualityHeaderValue("application/json"));
-
-            FizzBuzzResult fizzBuzzResult = null;
 
             var response = await client.GetAsync($"api/fizzbuzz?number={number}");
 

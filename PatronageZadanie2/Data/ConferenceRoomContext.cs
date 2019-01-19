@@ -27,7 +27,7 @@ namespace PatronageZadanie2.Data
 
             modelBuilder.Entity<ConferenceRoom>(entity =>
             {
-                entity.HasKey(e => e.Id);
+                //entity.HasKey(e => e.Id);
                 entity.Property(e => e.Name).IsRequired();
                 entity.Property(e => e.Area).IsRequired();
                 entity.Property(e => e.Capacity).IsRequired();
