@@ -1,11 +1,4 @@
-﻿using PatronageZadanie2.Error;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-
-namespace PatronageZadanie2.FizzBuzz
+﻿namespace PatronageZadanie2.FizzBuzz
 {
     public class FizzBuzzGenerator
     {

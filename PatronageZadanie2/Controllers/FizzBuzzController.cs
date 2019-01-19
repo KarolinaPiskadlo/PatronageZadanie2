@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using PatronageZadanie2.Models;
-using Microsoft.Extensions.Logging;
 using PatronageZadanie2.FizzBuzz;
 using PatronageZadanie2.Error;
 
